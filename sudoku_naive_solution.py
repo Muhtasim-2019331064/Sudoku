@@ -1,11 +1,19 @@
 # Naive sudoku solution using backtracking.
 
-def print_board(board):
+RED = "\033[31m"
+NO_COLOR = "\033[0m"
+
+def print_board(board, empty_cells):
     print()
 
     for r in range(9):
         for c in range(9):
-            print(board[r][c], end=" ")
+            COL = NO_COLOR
+
+            if [r, c] in empty_cells:
+                COL = RED
+            
+            print("{0}{1}{2} ".format(COL, board[r][c], NO_COLOR), end="")
 
             if c % 3 == 2 and c != 8:
                 print("| ", end="")
@@ -44,7 +52,7 @@ def is_present_in_box(board, row, column, candidate):
 
 def solve(board, empty_cells, index):
     if index == len(empty_cells):
-        print_board(board)
+        print_board(board, empty_cells)
         return
 
     row, column = empty_cells[index]
