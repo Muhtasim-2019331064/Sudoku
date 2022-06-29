@@ -1,5 +1,6 @@
 # Naive sudoku solution using backtracking.
 
+# The cells that were vacant, will be marked in red.
 RED = "\033[31m"
 NO_COLOR = "\033[0m"
 
